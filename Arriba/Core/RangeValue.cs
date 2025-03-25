@@ -20,4 +20,9 @@ public class RangeValue
     {
         return Min + RngGenerator.Get() * (Max - Min);
     }
+    
+    public int RandomInt()
+    {
+        return (int)(Min + RngGenerator.Get() * (Max - Min));
+    }
 }

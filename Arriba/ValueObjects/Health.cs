@@ -16,14 +16,14 @@ public class Health
         {
             X = position.X,
             Y = position.Y - 10,
-            W = 25,
+            W = 32,
             H = 4 
         }.ToInt(), 1, Color.Black);
         Globals.SpriteBatch.DrawRect(new RectangleD
         {
             X = position.X + 1,
             Y = position.Y - 9,
-            W = 23 * Value/MaxValue,
+            W = 30 * Value/MaxValue,
             H = 2 
         }.ToInt(), 1, Color.Red);
     }

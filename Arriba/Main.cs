@@ -1,5 +1,7 @@
-﻿using Arriba.Core;
+﻿using System.Globalization;
+using Arriba.Core;
 using Arriba.Core.Entities;
+using Arriba.Core.Extensions;
 using Arriba.Entities;
 using Arriba.Entities.Weapons;
 using Microsoft.Xna.Framework;
@@ -25,7 +27,7 @@ public class Main : Game
         new Character(this)
         {
             Position = new Vector2(xCenter, yCenter),
-            Weapon = new MachineGun(this)
+            Weapon = new ShotGun(this)
         };
 
         base.Initialize();
@@ -40,7 +42,7 @@ public class Main : Game
 
     protected override void Update(GameTime gameTime)
     {
-        this.Window.Title = Components.Count.ToString();
+        this.Window.Title = (1/gameTime.Dt()).ToString(CultureInfo.CurrentCulture);
         if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 

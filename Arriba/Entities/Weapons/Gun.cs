@@ -9,10 +9,10 @@ public class Gun : Weapon
 {
     public Gun(Game game): base(game)
     {
-        MaxCooldown = 1f;
+        MaxCooldown = 1/3f;
         Damage = 10f;
-        MaxAmmo = Ammo = Int32.MaxValue;
-        Force = new RangeValue(200);
+        Ammo = MaxAmmo = Int32.MaxValue;
+        Force = new RangeValue(300);
         //Sound = Game.Content.Load<SoundEffect>("SFX/gun_shot");
     }
 
@@ -20,7 +20,6 @@ public class Gun : Weapon
     {
         if (!CanShoot)
             return;
-        Ammo--;
         CanShoot = false;
         Sound?.Play();
         new Shot(game)

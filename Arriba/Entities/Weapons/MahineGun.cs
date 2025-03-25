@@ -7,15 +7,15 @@ public class MachineGun : Weapon
 {
     public MachineGun(Game game): base(game)
     {
-        MaxCooldown = 1/5f;
-        Damage = 5f;
-        MaxAmmo = Ammo = 500;
-        Force = new RangeValue(200);
+        MaxCooldown = 1/10f;
+        Damage = 2f;
+        Ammo = MaxAmmo = 300;
+        Force = new RangeValue(300);
     }
 
     public override void Shoot(Vector2 pos, Vector2 direction, Game game)
     {
-        if (!CanShoot)
+        if (!CanShoot || Depleted)
             return;
         Ammo--;
         CanShoot = false;

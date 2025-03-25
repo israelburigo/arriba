@@ -43,6 +43,9 @@ public class Character : DrawableGameComponent, ICharacter
     {
         Globals.SpriteBatch.Draw(Texture, Position, Color.White);
         Health.Draw(gameTime, Position);
+
+        if (Weapon is not Gun)
+            Weapon?.Draw(gameTime, Position);
     }
 
     public override void Update(GameTime gameTime)
@@ -77,6 +80,9 @@ public class Character : DrawableGameComponent, ICharacter
 
         if (mouse.LeftButton == ButtonState.Pressed)
             Weapon?.Shoot(Bounds.Center, direction, Game);
+        
+        if (Weapon!.Depleted)
+            Weapon = new Gun(Game);
 
         Position += velocity * gameTime.Dt();
         Bounds.TopLeft = Position;
