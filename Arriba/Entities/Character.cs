@@ -50,8 +50,6 @@ public class Character : DrawableGameComponent, ICharacter
 
     public override void Update(GameTime gameTime)
     {
-        Weapon?.Update(gameTime);
-
         var state = Keyboard.GetState();
         var mouse = Mouse.GetState();
 
@@ -80,6 +78,8 @@ public class Character : DrawableGameComponent, ICharacter
 
         if (mouse.LeftButton == ButtonState.Pressed)
             Weapon?.Shoot(Bounds.Center, direction, Game);
+        
+        Weapon?.Update(gameTime);
         
         if (Weapon!.Depleted)
             Weapon = new Gun(Game);

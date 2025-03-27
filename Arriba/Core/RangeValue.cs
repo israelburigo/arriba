@@ -8,7 +8,7 @@ public class RangeValue
     public RangeValue(float min, float max)
     {
         Min = min;
-        Min = max;
+        Max = max;
     }
 
     public RangeValue(float value)
@@ -23,6 +23,11 @@ public class RangeValue
     
     public int RandomInt()
     {
-        return (int)(Min + RngGenerator.Get() * (Max - Min));
+        return (int)Random();
+    }
+
+    public override string ToString()
+    {
+        return $"{Min}-{Max}";
     }
 }

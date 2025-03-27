@@ -16,7 +16,7 @@ public class Gun : Weapon
         //Sound = Game.Content.Load<SoundEffect>("SFX/gun_shot");
     }
 
-    public override void Shoot(Vector2 pos, Vector2 direction, Game game)
+    protected override void DoShoot(Vector2 pos, Vector2 direction, Game game)
     {
         if (!CanShoot)
             return;

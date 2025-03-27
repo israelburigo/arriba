@@ -10,21 +10,21 @@ public class ShotGun : Weapon
 {
     public ShotGun(Game game) : base(game)
     {
-        MaxCooldown = 1 / 2f;
+        MaxCooldown = 1f;
         Damage = 5f;
         Ammo = MaxAmmo = 50;
         Force = new RangeValue(300);
     }
 
-    public override void Shoot(Vector2 pos, Vector2 direction, Game game)
+    protected override void DoShoot(Vector2 pos, Vector2 direction, Game game)
     {
         if (!CanShoot || Depleted)
             return;
         CanShoot = false;
-        
+
         Ammo--;
-        var range = new RangeValue(4, 7);
-        var angle = new RangeValue(-MathF.PI/20, MathF.PI/20);
+        var range = new RangeValue(4, 8);
+        var angle = new RangeValue(-.04f, .04f);
 
         for (var i = 0; i < range.RandomInt(); i++)
             new Shot(game)

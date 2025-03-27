@@ -13,7 +13,7 @@ public class MachineGun : Weapon
         Force = new RangeValue(300);
     }
 
-    public override void Shoot(Vector2 pos, Vector2 direction, Game game)
+    protected override void DoShoot(Vector2 pos, Vector2 direction, Game game)
     {
         if (!CanShoot || Depleted)
             return;
@@ -26,5 +26,6 @@ public class MachineGun : Weapon
             Velocity = direction * Force.Random(),
             Damage = Damage,
         };
+
     }
 }

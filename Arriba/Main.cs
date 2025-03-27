@@ -21,39 +21,34 @@ public class Main : Game
 
     protected override void Initialize()
     {
+        base.Initialize();
+
         var xCenter = Globals.Graphics.GraphicsDevice.Viewport.Width / 2;
         var yCenter = Globals.Graphics.GraphicsDevice.Viewport.Height / 2;
-
         new Character(this)
         {
             Position = new Vector2(xCenter, yCenter),
             Weapon = new ShotGun(this)
         };
-
-        base.Initialize();
     }
 
     protected override void LoadContent()
     {
         Globals.SpriteBatch = new SpriteBatch(GraphicsDevice);
-
         // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
     {
-        this.Window.Title = (1/gameTime.Dt()).ToString(CultureInfo.CurrentCulture);
+        Window.Title = (1 / gameTime.Dt()).ToString(CultureInfo.CurrentCulture);
         if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        // TODO: Add your update logic here
-
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Gray);
 
         Globals.SpriteBatch.Begin();
         base.Draw(gameTime);
